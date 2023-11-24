@@ -1,14 +1,14 @@
 [
     {
-        "id": 1,
+        "id": "3bcce2fc-0ff6-401f-937a-ceed07d26cda",
         "title" : "Learn NodeJs",
         "description" : "Learning backend development to build systems.",
-        "complettionStatus" : 1
+        "complettionStatus" : true
     },
     {
-        "id":2,
+        "id":"7829525a-f287-4a81-baf2-31b359857855",
         "title" : "Implement a Project",
         "description" : "Create a project to have concrete understanding of your learning.",
-        "complettionStatus" : 0
+        "complettionStatus" : false
     }
 ]

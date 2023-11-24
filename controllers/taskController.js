@@ -46,7 +46,7 @@ taskController.post('/', validators.validateTaskToBeAddedOrUpdated, (req,res) =>
     
 });
 
-taskController.put('/:id', validators.validateTaskToBeAddedOrUpdated, (req,res) => {
+taskController.put('/:id', [validators.validateTaskId,validators.validateTaskToBeAddedOrUpdated], (req,res) => {
     try{
 
         let data = taskHelper.updateTaskInTaskList(req.params.id, req.body);

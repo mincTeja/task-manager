@@ -1,10 +1,14 @@
 [
     {
         "id": 1,
-        "title" : "Learn NodeJs"
+        "title" : "Learn NodeJs",
+        "description" : "Learning backend development to build systems.",
+        "complettionStatus" : 1
     },
     {
         "id":2,
-        "title" : "Implement a Project"
+        "title" : "Implement a Project",
+        "description" : "Create a project to have concrete understanding of your learning.",
+        "complettionStatus" : 0
     }
 ]

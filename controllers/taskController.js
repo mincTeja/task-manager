@@ -1,36 +1,75 @@
 const taskController = require('express').Router()
 const taskHelper = require('../helper/taskHelper')
+const validators = require('../middlewares/validationMiddleware')
 
 
 
 taskController.get('/', (req, res) => {
-    res
-    .send(taskHelper.fetchAllTasksInTaskList())
-    .status(200);
-})
+    try{
+        
+        res
+        .send(taskHelper.fetchAllTasksInTaskList())
+        .status(200);
+    
+    }catch(err) {
+    
+        console.log(`error in controller ${err}`);
+        next(err);
+    
+    }  
+});
 
-taskController.get('/:id', (req, res) => {
-    res
-    .send(taskHelper.fetchTaskInTaskList(req.params.id))
-    .status(200);
-})
+taskController.get('/:id', validators.validateTaskId, (req, res, next) => {
+    try{
 
-taskController.post('/', (req,res) => {
-    res
-    .send(taskHelper.addTaskInTaskList(req.body))
-    .status(200);
-})
+        let data = taskHelper.fetchTaskInTaskList(req.params.id);
+        res.send(data);
+    
+    } catch(err){
+    
+        console.log(`error in controller ${err}`);
+        next(err);
+    
+    }
+});
 
-taskController.put('/:id', (req,res) => {
-    res
-    .send(taskHelper.updateTaskInTaskList(req.params.id, req.params.body))
-    .status(200);
-})
+taskController.post('/', validators.validateTaskToBeAddedOrUpdated, (req,res) => {
+    try{
 
-taskController.delete('/:id', (req, res) => {
-    res
-    .send(taskHelper.deleteTaskInTaskList(req.params.id))
-    .status(200);
-})
+        let data = taskHelper.addTaskInTaskList(req.body);
+        res.send(data);
 
-module.exports = taskController
+    }catch(err) {
+        console.log(`error in controller ${err}`);
+        next(err);
+    }
+    
+});
+
+taskController.put('/:id', validators.validateTaskToBeAddedOrUpdated, (req,res) => {
+    try{
+
+        let data = taskHelper.updateTaskInTaskList(req.params.id, req.body);
+        res.send(data);
+
+    }catch(err) {
+        console.log(`error in controller ${err}`);
+        next(err);
+    }
+});
+
+taskController.delete('/:id', validators.validateTaskId, (req, res) => {
+    try{
+    
+        let data = taskHelper.deleteTaskInTaskList(req.params.id);
+        res.send(data);
+    
+    } catch(err) {
+    
+        console.log(`error in controller ${err}`);
+        next(err);
+    
+    }
+});
+
+module.exports = taskController;

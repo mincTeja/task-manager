@@ -45,7 +45,7 @@ function addTaskInTaskList(taskToBeAdded){
     
     } catch (err) {
        
-        throw formAndHandleError(errorConstant.INTERNAL_SERVER_ERROR_MESSAGE, errorConstant.INTERNAL_SERVER_ERROR_STATUS_CODE);
+        throw errorGeneratorUtil.formAndHandleError(errorConstant.INTERNAL_SERVER_ERROR_MESSAGE, errorConstant.INTERNAL_SERVER_ERROR_STATUS_CODE);
     }
 }
 
@@ -66,7 +66,7 @@ function updateTaskInTaskList(taskId, taskToBeUpdated){
 
         return taskList;
     } catch(err){
-        throw formAndHandleError(errorConstant.INTERNAL_SERVER_ERROR_MESSAGE, errorConstant.INTERNAL_SERVER_ERROR_STATUS_CODE);
+        throw errorGeneratorUtil.formAndHandleError(errorConstant.INTERNAL_SERVER_ERROR_MESSAGE, errorConstant.INTERNAL_SERVER_ERROR_STATUS_CODE);
     }
 
     
@@ -77,7 +77,7 @@ function deleteTaskInTaskList(taskId){
         taskList = taskList.filter(task => task.id != taskId);
         return taskList;
     }catch(err) {
-        throw formAndHandleError(errorConstant.INTERNAL_SERVER_ERROR_MESSAGE, errorConstant.INTERNAL_SERVER_ERROR_STATUS_CODE);
+        throw errorGeneratorUtil.formAndHandleError(errorConstant.INTERNAL_SERVER_ERROR_MESSAGE, errorConstant.INTERNAL_SERVER_ERROR_STATUS_CODE);
     }
     
 }

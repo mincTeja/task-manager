@@ -22,11 +22,11 @@ function validateTaskToBeAddedOrUpdated(req, res, next){
     try{
         const task = req.body;
 
-        if(typeof task.title === "undefined" || typeof task.title === "string" && task.title.length === 0){
+        if(typeof task.title === "undefined" || (typeof task.title === "string" && task.title.length === 0)){
             throw new ValidationError("Title is mandatory field", errorConstant.BAD_REQUEST_STATUS_CODE);
         }
 
-        if(typeof task.description === "undefined" || typeof task.description === "string" && task.description.length === 0){
+        if(typeof task.description === "undefined" || (typeof task.description === "string" && task.description.length === 0)){
             throw new ValidationError(" Description is mandatory field", errorConstant.BAD_REQUEST_STATUS_CODE);
         }
 
